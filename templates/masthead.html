@@ -1,0 +1,82 @@
+$def with (name,user,appdescription)
+<title>$name</title>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+  <script src="/static/jquery.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+<body>
+<style type="text/css">
+	a{
+    	font-family: arial;
+    	font-weight: bold;
+    	font-size: 12px;
+    }
+</style>
+<nav class="navbar navbar-default navbarnobottommargin">
+  <div class="container-fluid ">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/infinitylogo1.gif" width="50px"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+$if user == 'null':
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Features <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Auto Payment</a></li>
+            <li><a href="#">Profile Management</a></li>
+            <li><a href="#">Tracking and Analytics</a></li>
+          </ul>
+        </li>
+        <li><a href="/how">How it works</a></li>
+        <li><a href="/faq">Faq</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="btn-info"><a href="/register" style="color:#fff;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+        <li class="btn-primary"><a href="/login" style="color:#fff;"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+      </ul>
+$else:
+      <style type="text/css">
+      .showornot{
+      	display: none;
+      }
+      </style>
+            <ul class="nav navbar-nav">
+        <li class="active"><a href="/user/$user[1]">Home</a></li>
+         <li><a href="/notifications"><span class="glyphicon glyphicon-bullhorn"></span> Notifications</a></li>
+       <li><a href="/messages"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">$user[1]<span class="caret"></span></a>
+       <ul class="dropdown-menu">
+       <li><a href="/user/$user"><span class="glyphicon glyphicon-user"></span> Account</a></li>
+       </ul>
+      </li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center bannerbg blindbannerbg">
+ <div class="innerbannerbg">
+  <span class="apptitle">$appdescription[0]</span>
+  <p> $appdescription[1]</p>
+  <a href="register">
+  <button type="button" class="btn btn-info showornot">Are you a pensioneer? sign up now</button>
+  </a>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
